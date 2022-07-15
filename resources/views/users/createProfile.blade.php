@@ -1,21 +1,19 @@
 @extends('layouts.layout')
 @section('cont')
     <div class="login-box">
-        <h2>Add New Meal</h2>
-        <form method="post" action="{{ route('food.store',Auth::user()->id) }}" enctype="multipart/form-data">
+        <h2>Complete your Profile</h2>
+        <form method="post" action="{{ route('save',Auth::user()->id) }}" enctype="multipart/form-data">
             @csrf
             <div class="user-box">
-                <input type="text" name="name" required>
-                <label>Meal name</label>
+                <input type="nomber" name="phone" required>
+                <label>phone No</label>
             </div>
+
             <div class="user-box">
-                <input type="text" name="price" required>
-                <label>Meal price</label>
+                <input type="text" name="address" required>
+                <label>Address</label>
             </div>
-            <div class="user-box">
-                <input type="longtext" name="description" required>
-                <label>Discrito</label>
-            </div>
+
             <div class="user-box">
                 <input type="file" name="image" required>
             </div>
@@ -32,3 +30,5 @@
 
 @section('footer')
 @endsection
+
+

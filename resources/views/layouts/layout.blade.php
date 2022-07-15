@@ -10,19 +10,23 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
     <title>Spicyo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('images/logo.png') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
 
-
     <!-- owl css -->
     <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.min.css') }}">
     {{-- login css --}}
     <link rel="stylesheet" href="{{ URL::asset('css/login.css') }}">
-   {{-- user css --}}
-   <link rel="stylesheet" href="{{ URL::asset('css/user.css') }}">
+    {{-- profile css --}}
+    <link rel="stylesheet" href="{{ URL::asset('css/profile.css') }}">
+    {{-- user css --}}
+    <link rel="stylesheet" href="{{ URL::asset('css/user.css') }}">
     <!-- style css -->
     <link rel="stylesheet" href="{{ URL::asset('../css/style.css') }}">
     <!-- responsive-->
@@ -52,24 +56,27 @@
                     <i class="fa fa-arrow-left"></i>
                 </div>
 
-                <ul class="list-unstyled components">
 
-                    <li class="active">
-                        <a href="{{ route('index') }}">Home</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('about') }}">About</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('recipe') }}">Recipe</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('blog') }}">Blog</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('contact') }}">Contact Us</a>
-                    </li>
-                    @if (Auth::user())
+
+                @if (Auth::user())
+                    <ul class="list-unstyled components">
+
+                        <li class="active">
+                            <a href="{{ route('profile') }}">My Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('create.meal') }}">Create meal</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('control') }}">Show All</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('blog') }}">All Meals</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('contact') }}">Contact Us</a>
+                        </li>
+
                         <li>
                             <form method="post" action="{{ route('logout') }}">
                                 @csrf
@@ -77,9 +84,44 @@
 
                             </form>
                         </li>
+                    </ul>
                     @else
+
+                    <ul class="list-unstyled components">
+
+                        <li class="active">
+                            <a href="{{ route('index') }}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('about') }}">About</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('recipe') }}">Recipe</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('blog') }}">All Meals</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('contact') }}">Contact Us</a>
+                        </li>
+                        {{-- <li>
+                            <form method="post" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Logout</button>
+
+                            </form>
+                        </li> --}}
+                    </ul>
+
                     @endif
-                </ul>
+
+
+
+
+
+
+
+
 
             </nav>
         </div>
@@ -101,15 +143,16 @@
                                     <ul>
                                         <li class="dinone">Contact Us : <img
                                                 style="margin-right: 15px;margin-left: 15px;"
-                                                src="{{ URL::asset('images/phone_icon.png') }}" alt="#"><a
-                                                >00963947032440</a></li>
+                                                src="{{ URL::asset('images/phone_icon.png') }}"
+                                                alt="tel:00963947032440"><a>00963947032440</a></li>
                                         <li class="dinone"><img style="margin-right: 15px;"
                                                 src="{{ URL::asset('images/mail_icon.png') }}" alt="#"><a
-                                                href="mailto:Abdulkader.haj.mahmoud@gmail.com">Abdulkader.haj.mahmoud@gmail.com</a></li>
+                                                href="mailto:Abdulkader.haj.mahmoud@gmail.com">Abdulkader.haj.mahmoud@gmail.com</a>
+                                        </li>
                                         <li class="dinone"><img
                                                 style="margin-right: 15px;height: 21px;position: relative;top: -2px;"
-                                                src="{{ URL::asset('images/location_icon.png') }}" alt="#"><a
-                                                >Alexandria-Egypt</a></li>
+                                                src="{{ URL::asset('images/location_icon.png') }}"
+                                                alt="#"><a>Alexandria-Egypt</a></li>
                                         @if (Auth::user())
                                         @else
                                             <li class="button_user">
@@ -137,84 +180,84 @@
 
 
             @section('footer')
-            <!-- footer -->
-            <fooetr>
-                <div class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class=" col-md-12">
-                                <h2>Request A<strong class="white"> Call Back</strong></h2>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-
-                                <form class="main_form">
-                                    <div class="row">
-
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <input class="form-control" placeholder="Name" type="text"
-                                                name="Name">
-                                        </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <input class="form-control" placeholder="Email" type="text"
-                                                name="Email">
-                                        </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <input class="form-control" placeholder="Phone" type="text"
-                                                name="Phone">
-                                        </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
-                                        </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <button class="send">Send</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <div class="img-box">
-                                    <figure><img src="{{ URL::asset('images/img.jpg') }}" alt="img" />
-                                    </figure>
+                <!-- footer -->
+                <fooetr>
+                    <div class="footer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class=" col-md-12">
+                                    <h2>Request A<strong class="white"> Call Back</strong></h2>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="footer_logo">
-                                    <a href="index.html"><img src="{{ URL::asset('images/logo1.jpg') }}"
-                                            alt="logo" /></a>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <ul class="lik">
-                                    <li class="active"> <a href="{{ route('index') }}">Home</a></li>
-                                    <li> <a href="{{ route('about') }}">About</a></li>
-                                    <li> <a href="{{ route('recipe') }}">Recipe</a></li>
-                                    <li> <a href="{{ route('blog') }}">Blog</a></li>
-                                    <li> <a href="{{ route('contact') }}">Contact us</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="new">
-                                    <h3>Newsletter</h3>
-                                    <form class="newtetter">
-                                        <input class="tetter" placeholder="Your email" type="text"
-                                            name="Your email">
-                                        <button class="submit">Subscribe</button>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+
+                                    <form class="main_form">
+                                        <div class="row">
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                <input class="form-control" placeholder="Name" type="text"
+                                                    name="Name">
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                <input class="form-control" placeholder="Email" type="text"
+                                                    name="Email">
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                <input class="form-control" placeholder="Phone" type="text"
+                                                    name="Phone">
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                <button class="send">Send</button>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="img-box">
+                                        <figure><img src="{{ URL::asset('images/img.jpg') }}" alt="img" />
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="footer_logo">
+                                        <a href="{{ url('/') }}"><img src="{{ URL::asset('images/logo1.jpg') }}"
+                                                alt="logo" /></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <ul class="lik">
+                                        <li class="active"> <a href="{{ route('index') }}">Home</a></li>
+                                        <li> <a href="{{ route('about') }}">About</a></li>
+                                        <li> <a href="{{ route('recipe') }}">Recipe</a></li>
+                                        <li> <a href="{{ route('blog') }}">Blog</a></li>
+                                        <li> <a href="{{ route('contact') }}">Contact us</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="new">
+                                        <h3>Newsletter</h3>
+                                        <form class="newtetter">
+                                            <input class="tetter" placeholder="Your email" type="text"
+                                                name="Your email">
+                                            <button class="submit">Subscribe</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="copyright">
+                            <div class="container">
+                                <p>© 2022 All Rights Reserved. Design by<a href="https://html.design/"> Abdulkader HM</a>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="copyright">
-                        <div class="container">
-                            <p>© 2022 All Rights Reserved. Design by<a href="https://html.design/"> Abdulkader HM</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </fooetr>
-            <!-- end footer -->
+                </fooetr>
+                <!-- end footer -->
 
             @show
 
@@ -287,4 +330,3 @@
 </body>
 
 </html>
-

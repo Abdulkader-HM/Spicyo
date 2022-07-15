@@ -30,6 +30,12 @@ class PagesController extends Controller
         return view('food.contact');
     }
 
+    public function control()
+    {
+        $foods = Food::paginate(4);
+        return view('food.control', compact('foods'));
+    }
+
     public function store(Request $request)
     {
         $newImageName = time() . "-" . $request->name . "." . $request->image->extension();
@@ -42,5 +48,16 @@ class PagesController extends Controller
             'image' => $newImageName
         ]);
         return redirect()->route('home');
+    }
+
+    public function destroy($id)
+    {
+        Food::destroy($id);
+        return redirect()->route('control');
+    }
+
+    public function createMeal()
+    {
+        return view('food.user');
     }
 }
