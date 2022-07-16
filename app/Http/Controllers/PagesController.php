@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -32,7 +33,7 @@ class PagesController extends Controller
 
     public function control()
     {
-        $foods = Food::paginate(4);
+        $foods = Food::where('user_id', Auth::user()->id)->paginate(4);
         return view('food.control', compact('foods'));
     }
 
@@ -45,9 +46,10 @@ class PagesController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'description' => $request->description,
+            'user_id' => Auth::user()->id,
             'image' => $newImageName
         ]);
-        return redirect()->route('home');
+        return redirect()->route('blog');
     }
 
     public function destroy($id)
@@ -59,5 +61,25 @@ class PagesController extends Controller
     public function createMeal()
     {
         return view('food.user');
+    }
+
+    public function editMeal($id)
+    {
+        $meal = Food::find($id);
+        return view('food.edit', compact('meal'));
+    }
+
+    public function updateMeal(Request $request, $id)
+    {
+        $newImageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('images/food'), $newImageName);
+        Food::find($id)->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'user_id' => Auth::user()->id,
+            'image' => $newImageName,
+            'description' => $request->description
+        ]);
+        return redirect()->route('control');
     }
 }

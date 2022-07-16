@@ -92,7 +92,7 @@
                 <td>{{ $food->price }}</td>
                 <td>{{ $food->description }}</td>
 
-                <td><a href="" class="btn btn-secondary">Edit</a></td>
+                <td><a href="{{ route('food.edit',$food->id) }}" class="btn btn-secondary">Edit</a></td>
                 <td>
                     <form method="food" action="{{ route('delete',$food->id) }}">
                         @method('DELETE')

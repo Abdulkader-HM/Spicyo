@@ -6,6 +6,9 @@
 <div class="card-container">
 	@if(Auth::user()->is_admin == 1)
 	<span class="pro">PRO</span>
+	@else
+	<span class="pro">user</span>
+
 	@endif
 
 	@if(Auth::user()->profile)

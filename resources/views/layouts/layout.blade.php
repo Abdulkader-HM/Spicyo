@@ -68,7 +68,7 @@
                             <a href="{{ route('create.meal') }}">Create meal</a>
                         </li>
                         <li>
-                            <a href="{{ route('control') }}">Show All</a>
+                            <a href="{{ route('control') }}">My Meals</a>
                         </li>
                         <li>
                             <a href="{{ route('blog') }}">All Meals</a>

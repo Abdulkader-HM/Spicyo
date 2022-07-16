@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Food extends Model
 {
     use HasFactory;
-    protected $fillable=['name','price','description','image'];
+    protected $fillable = ['name', 'price', 'user_id', 'description', 'image'];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

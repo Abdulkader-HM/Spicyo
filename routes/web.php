@@ -34,7 +34,9 @@ Route::controller(PagesController::class)->group(function () {
     Route::post('food/store', 'store')->name('food.store');
     Route::get('food/control', 'control')->name('control')->middleware('auth');
     Route::get('food/destroy/{id}', 'destroy')->name('delete');
-    Route::get('food/create','createMeal')->name('create.meal');
+    Route::get('food/create', 'createMeal')->name('create.meal');
+    Route::get('food/edit/{id}', 'editMeal')->name('food.edit');
+    Route::post('food/update/{id}', 'updateMeal')->name('food.update');
 });
 
 Route::controller(ProfileController::class)->group(function () {

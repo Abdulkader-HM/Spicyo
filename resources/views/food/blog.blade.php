@@ -32,21 +32,26 @@
 
 
 
-            
+
             <div class="row">
-                @foreach ($foods as $food )
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
-                    <div class="blog_box">
-                        <div class="blog_img_box">
-                            <figure><img src="{{ URL::asset('images/food/'.$food->image) }}" height="20%" width="200px" alt="#" />
-                                <span>{{ $food->price }}$</span>
-                            </figure>
+                @foreach ($foods as $food)
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
+                        <div class="blog_box">
+                            <div class="blog_img_box">
+                                <figure><img src="{{ URL::asset('images/food/' . $food->image) }}" height="20%"
+                                        width="200px" alt="#" />
+                                    <span>{{ $food->price }}$</span>
+                                </figure>
+                            </div>
+                            <h3>{{ $food->name }}</h3>
+                            <p>{{ $food->description }} </p>
+                            @if ($food->user->is_admin === 1)
+                                <h4 style="color: red"> Posted by Admin </h4>
+                            @else
+                                <h4 style="color: blue"> Posted by {{ $food->user->name }}</h4>
+                            @endif
                         </div>
-                        <h3>{{ $food->name }}</h3>
-                        <p>{{ $food->description }} </p>
                     </div>
-                </div>
-            
                 @endforeach
 
 
