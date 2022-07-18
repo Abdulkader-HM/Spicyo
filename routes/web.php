@@ -21,9 +21,9 @@ Route::get('/', function () {
     return view('food.index');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
 
 Route::controller(PagesController::class)->group(function () {
     Route::get('food/index', 'index')->name('index');
