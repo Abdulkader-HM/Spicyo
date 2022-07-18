@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\CallBackController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Mail\TestEmail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +49,8 @@ Route::controller(ProfileController::class)->group(function () {
     Route::get('test', 'test')->name('test');
     Route::get('user/create/profile', 'createProfile')->name('create');
     Route::post('user/save/profile/{id}', 'saveProfile')->name('save');
+});
+
+Route::controller(CallBackController::class)->group(function () {
+    Route::post('user/message', 'saveMail')->name('message');
 });
