@@ -10,12 +10,11 @@ class CallBackController extends Controller
 {
     public function saveMail(Request $request)
     {
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required',
-            'phone'=>'required',
-            'message'=>'required',
-        ]);
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'type' => 'required',
+        // ]);
         CallBack::create([
             'name' => $request->name,
             'user_id' => Auth::user()->id,

@@ -54,3 +54,5 @@ Route::controller(ProfileController::class)->group(function () {
 Route::controller(CallBackController::class)->group(function () {
     Route::post('user/message', 'saveMail')->name('message');
 });
+
+

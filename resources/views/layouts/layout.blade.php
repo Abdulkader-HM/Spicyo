@@ -59,6 +59,7 @@
 
 
                 @if (Auth::user())
+                
                     <ul class="list-unstyled components">
 
                         <li class="active">
