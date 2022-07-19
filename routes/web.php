@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CallBackController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,8 @@ Route::controller(ProfileController::class)->group(function () {
     Route::get('user/create/profile', 'createProfile')->name('create');
     Route::post('user/save/profile/{id}', 'saveProfile')->name('save');
 });
+
+Route::post('user/newsletter', [NewsController::class,'newsLetter'])->name('newsletter');
 
 Route::controller(CallBackController::class)->group(function () {
     Route::post('user/message', 'saveMail')->name('message');

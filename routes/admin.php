@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth', 'middleware' => 'is_admin', 'prefix' => 'a
 });
 
 // Route::controller(AdminController::class)->
-// group(['middleware' => 'auth', 'middleware' => 'isAdmin', 'prefix' => 'admin'],
+// group(['middleware' => 'auth', 'middleware' => 'is_admin', 'prefix' => 'admin'],
 //  function () {
 
 //     Route::get('index','index')->name('index');

@@ -240,11 +240,15 @@
                                 <div class="col-md-12">
                                     <div class="new">
                                         <h3>Newsletter</h3>
-                                        <form class="newtetter">
-                                            <input class="tetter" placeholder="Your email" type="text"
-                                                name="Your email">
+
+                                        <form class="newtetter" method="post" action="{{ route('newsletter') }}">
+                                            @csrf
+                                            <input class="tetter" placeholder="Your email" type="email"
+                                                name="email">
                                             <button class="submit">Subscribe</button>
                                         </form>
+
+
                                     </div>
                                 </div>
                             </div>
