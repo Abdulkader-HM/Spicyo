@@ -18,9 +18,17 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->is_admin === 1) {
+        // if (Auth::user()->is_admin === 1) {
+        //     return $next($request);
+        // }
+        // return redirect('login');
+
+        if (!(Auth::user())) {
+            return redirect('login');
+        } elseif (!(Auth::user()->is_admin === 1)) {
+            return redirect('login');
+        } else {
             return $next($request);
         }
-        return redirect('login');
     }
 }

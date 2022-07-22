@@ -14,7 +14,7 @@
             </div>
             <div class="user-box">
                 <input type="longtext" name="description" required>
-                <label>Discrito</label>
+                <label>Description</label>
             </div>
             <div class="user-box">
                 <input type="file" name="image" required>

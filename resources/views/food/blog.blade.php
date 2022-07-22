@@ -50,7 +50,12 @@
                             @else
                                 <h4 style="color: blue"> Posted by {{ $food->user->name }}</h4>
                             @endif
+                            <form>
+                                <button type="submit" class="btn btn-danger">buy</button>
+                            </form>
+                            <br>
                         </div>
+
                     </div>
                 @endforeach
 

@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Admin Dashboard</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ URL::asset('vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendors/css/vendor.bundle.base.css') }}">
@@ -26,6 +26,13 @@
 </head>
 
 <body>
+
+    <?php
+    use App\Models\CallBack;
+    use App\Models\Profile;
+    $messages = CallBack::latest()->paginate(5);
+    ?>
+
     <div class="container-scroller">
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -39,13 +46,20 @@
                 <li class="nav-item profile">
                     <div class="profile-desc">
                         <div class="profile-pic">
+
+                            @if(empty(Auth::user()->profile->image))
                             <div class="count-indicator">
-                                <img class="img-xs rounded-circle "
-                                    src="{{ URL::asset('images/dashboard/faces/face15.jpg') }}" alt="">
+                                <img class="img-xs rounded-circle "src="{{ URL::asset('images/profile/scary.gif') }}" alt="">
                                 <span class="count bg-success"></span>
                             </div>
+                            @else
+                            <div class="count-indicator">
+                                <img class="img-xs rounded-circle "src="{{ URL::asset('images/users/'.Auth::user()->profile->image) }}" alt="">
+                                <span class="count bg-success"></span>
+                            </div>
+                            @endif
                             <div class="profile-name">
-                                <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
+                                <h5 class="mb-0 font-weight-normal">{{ Auth::user()->name }}</h5>
                                 <span>Gold Member</span>
                             </div>
                         </div>
@@ -210,19 +224,19 @@
                     <ul class="navbar-nav navbar-nav-right">
                         <li class="nav-item dropdown d-none d-lg-block">
                             <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown"
-                                data-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>
+                                data-toggle="dropdown" aria-expanded="false" href="#">+ Create New </a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                                 aria-labelledby="createbuttonDropdown">
                                 <h6 class="p-3 mb-0">Projects</h6>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
+                                <a class="dropdown-item preview-item" href="{{ route('create.meal') }}">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-dark rounded-circle">
                                             <i class="mdi mdi-file-outline text-primary"></i>
                                         </div>
                                     </div>
                                     <div class="preview-item-content">
-                                        <p class="preview-subject ellipsis mb-1">Software Development</p>
+                                        <p class="preview-subject ellipsis mb-1">Create New Meal</p>
                                     </div>
                                 </a>
                                 <div class="dropdown-divider"></div>
@@ -266,40 +280,36 @@
                                 aria-labelledby="messageDropdown">
                                 <h6 class="p-3 mb-0">Messages</h6>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <img src="{{ URL::asset('images/dashboard/faces/face4.jpg') }}"
-                                            alt="image" class="rounded-circle profile-pic">
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
-                                        <p class="text-muted mb-0"> 1 Minutes ago </p>
-                                    </div>
-                                </a>
+
+
+                                @foreach ($msgs = CallBack::paginate(4) as $message)
+                                    <a class="dropdown-item preview-item">
+                                         @if(empty($message->user->profile->image))
+                                        <div class="preview-thumbnail">
+                                            <div class="preview-thumbnail">
+                                                <img src="{{ URL::asset('images/dashboard/faces/face2.jpg') }}"
+                                                    alt="image" class="rounded-circle profile-pic">
+                                            </div>
+                                        @else
+                                        <div class="preview-thumbnail">
+                                            <img src="{{ URL::asset('images/users/' . $message->user->profile->image) }}"
+                                                alt="image" class="rounded-circle profile-pic">
+                                        </div>
+                                        @endif 
+                                        <div class="preview-item-content">
+                                            <p class="preview-subject ellipsis mb-1">{{ $message->user->name }}
+                                                  sent you a message</p>
+                                            <p class="text-muted mb-0"> 1 Minutes ago </p>
+                                        </div>
+                                    </a>
+                                @endforeach
+
+
+
+
+
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <img src="{{ URL::asset('images/dashboard/faces/face2.jpg') }}"
-                                            alt="image" class="rounded-circle profile-pic">
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
-                                        <p class="text-muted mb-0"> 15 Minutes ago </p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <img src="{{ URL::asset('images/dashboard/faces/face3.jpg') }}"
-                                            alt="image" class="rounded-circle profile-pic">
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
-                                        <p class="text-muted mb-0"> 18 Minutes ago </p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <p class="p-3 mb-0 text-center">4 new messages</p>
+                                {{-- <p class="p-3 mb-0 text-center">{{ $message->id }} new messages</p> --}}
                             </div>
                         </li>
                         <li class="nav-item dropdown border-left">
@@ -354,10 +364,17 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                                
                                 <div class="navbar-profile">
-                                    <img class="img-xs rounded-circle"
-                                        src="{{ URL::asset('images/dashboard/faces/face15.jpg') }}" alt="">
-                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                                    @if(empty(Auth::user()->profile->image))
+                                    <img class="img-xs rounded-circle" src="{{ URL::asset('images/profile/scary.gif') }}" alt="">
+                                    @else
+                                    <img class="img-xs rounded-circle" src="{{ URL::asset('images/users/'.Auth::user()->profile->image) }}" alt="">
+
+                                    @endif
+
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}
+                                    </p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                                 </div>
                             </a>
@@ -365,7 +382,7 @@
                                 aria-labelledby="profileDropdown">
                                 <h6 class="p-3 mb-0">Profile</h6>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
+                                <a class="dropdown-item preview-item" href="{{ route('profile') }}">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-dark rounded-circle">
                                             <i class="mdi mdi-settings text-success"></i>
@@ -376,16 +393,21 @@
                                     </div>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-dark rounded-circle">
-                                            <i class="mdi mdi-logout text-danger"></i>
+                                <form method="post" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item preview-item">
+                                        <div class="preview-thumbnail">
+                                            <div class="preview-icon bg-dark rounded-circle">
+                                                <i class="mdi mdi-logout text-danger"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <p class="preview-subject mb-1">Log out</p>
-                                    </div>
-                                </a>
+                                        <div class="preview-item-content">
+                                            <p class="preview-subject mb-1">Log out</p>
+                                        </div>
+                                    </button>
+
+                                </form>
+
                                 <div class="dropdown-divider"></div>
                                 <p class="p-3 mb-0 text-center">Advanced settings</p>
                             </div>
@@ -404,34 +426,40 @@
 
 
         </div>
-        <!-- container-scroller -->
-        <!-- plugins:js -->
-        <script src="{{ URL::asset('vendors/js/vendor.bundle.base.js') }}"></script>
-        <!-- endinject -->
+        <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
+                    bootstrapdash.com
+                    2020</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                        href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
+                        templates</a> from Bootstrapdash.com</span>
+            </div>
+        </footer>
+        <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
 
 
+    <script src="{{ URL::asset('vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ URL::asset('vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
+    <script src="{{ URL::asset('vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ URL::asset('vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
+    <!-- container-scroller -->
+    <!-- inject:js -->
+    <script src="{{ URL::asset('js/dashboard/off-canvas.js') }}"></script>
+    <script src="{{ URL::asset('js/dashboard/chart.js') }}"></script>
+    <script src="{{ URL::asset('vendors/progressbar.js/progressbar.min.js') }}"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-        <!-- inject:js -->
-        <script src="{{ URL::asset('js/dashboard/off-canvas.js') }}"></script>
-        <script src="{{ URL::asset('js/dashboard/hoverable-collapse.js') }}"></script>
-        <script src="{{ URL::asset('js/dashboard/misc.js') }}"></script>
-        <script src="{{ URL::asset('js/dashboard/settings.js') }}"></script>
-        <script src="{{ URL::asset('js/dashboard/todolist.js') }}"></script>
-        <!-- endinject -->
-        <!-- plugins:js -->
-        <script src="{{ URL::asset('vendors/js/vendor.bundle.base.js') }}"></script>
-        <script src="{{ URL::asset('js/dashboard/dashboard.js') }}"></script>
+    <script src="{{ URL::asset('vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ URL::asset('js/dashboard/hoverable-collapse.js') }}"></script>
+    <script src="{{ URL::asset('js/dashboard/misc.js') }}"></script>
+    <script src="{{ URL::asset('js/dashboard/settings.js') }}"></script>
+    <script src="{{ URL::asset('js/dashboard/todolist.js') }}"></script>
+    <!-- endinject -->
+    <!-- plugins:js -->
+    <script src="{{ URL::asset('vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ URL::asset('js/dashboard/dashboard.js') }}"></script>
 </body>
 
 </html>
