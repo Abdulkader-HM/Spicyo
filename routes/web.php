@@ -3,6 +3,7 @@
 use App\Http\Controllers\CallBackController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -52,10 +53,12 @@ Route::controller(ProfileController::class)->group(function () {
     Route::post('user/save/profile/{id}', 'saveProfile')->name('save');
 });
 
-Route::post('user/newsletter', [NewsController::class,'newsLetter'])->name('newsletter');
+Route::post('user/newsletter', [NewsController::class, 'newsLetter'])->name('newsletter');
 
 Route::controller(CallBackController::class)->group(function () {
-    Route::post('user/message', 'saveMail')->name('message');
+    Route::post('user/message', 'saveMail')->name('message')->middleware('auth');
 });
 
-
+Route::controller(OrderController::class)->group(function () {
+    Route::post('user/order/{id}', 'order')->name('order')->middleware('auth');
+});

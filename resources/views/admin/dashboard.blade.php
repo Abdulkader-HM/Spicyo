@@ -454,7 +454,7 @@
 
 
                             <div class="preview-list">
-                                @if (!empty($user->callBack->messages))
+                                @if ($messages->count() > 0)
                                     @foreach ($messages as $message)
                                         <div class="preview-item border-bottom">
                                             <div class="preview-thumbnail">
@@ -542,7 +542,7 @@
                             </form>
 
 
-                            @if ($tasks->count()>0)
+                            @if ($tasks->count() > 0)
                                 <div class="list-wrapper">
                                     <ul class="d-flex flex-column-reverse text-white todo-list todo-list-custom">
                                         @foreach ($tasks as $task)
