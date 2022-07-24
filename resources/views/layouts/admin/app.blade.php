@@ -10,7 +10,14 @@
     <link rel="stylesheet" href="{{ URL::asset('vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendors/css/vendor.bundle.base.css') }}">
     <!-- endinject -->
-    <!-- Plugin css for this page -->
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css"
+        integrity="sha512-OivR4OdSsE1onDm/i3J3Hpsm5GmOVvr9r49K3jJ0dnsxVzZgaOJ5MfxEAxCyGrzWozL9uJGKz6un3A7L+redIQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- --------------------------------------------------------------------------------------------------------- --}}
 
     <link rel="stylesheet" href="{{ URL::asset('vendors/jvectormap/jquery-jvectormap.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendors/flag-icon-css/css/flag-icon.min.css') }}">
@@ -47,16 +54,18 @@
                     <div class="profile-desc">
                         <div class="profile-pic">
 
-                            @if(empty(Auth::user()->profile->image))
-                            <div class="count-indicator">
-                                <img class="img-xs rounded-circle "src="{{ URL::asset('images/profile/scary.gif') }}" alt="">
-                                <span class="count bg-success"></span>
-                            </div>
+                            @if (empty(Auth::user()->profile->image))
+                                <div class="count-indicator">
+                                    <img class="img-xs rounded-circle "src="{{ URL::asset('images/profile/scary.gif') }}"
+                                        alt="">
+                                    <span class="count bg-success"></span>
+                                </div>
                             @else
-                            <div class="count-indicator">
-                                <img class="img-xs rounded-circle "src="{{ URL::asset('images/users/'.Auth::user()->profile->image) }}" alt="">
-                                <span class="count bg-success"></span>
-                            </div>
+                                <div class="count-indicator">
+                                    <img class="img-xs rounded-circle "src="{{ URL::asset('images/users/' . Auth::user()->profile->image) }}"
+                                        alt="">
+                                    <span class="count bg-success"></span>
+                                </div>
                             @endif
                             <div class="profile-name">
                                 <h5 class="mb-0 font-weight-normal">{{ Auth::user()->name }}</h5>
@@ -124,7 +133,8 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+                            <li class="nav-item"> <a class="nav-link"
+                                    href="pages/ui-features/buttons.html">Buttons</a>
                             </li>
                             <li class="nav-item"> <a class="nav-link"
                                     href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
@@ -284,21 +294,21 @@
 
                                 @foreach ($msgs = CallBack::paginate(4) as $message)
                                     <a class="dropdown-item preview-item">
-                                         @if(empty($message->user->profile->image))
-                                        <div class="preview-thumbnail">
+                                        @if (empty($message->user->profile->image))
                                             <div class="preview-thumbnail">
-                                                <img src="{{ URL::asset('images/dashboard/faces/face2.jpg') }}"
-                                                    alt="image" class="rounded-circle profile-pic">
-                                            </div>
-                                        @else
-                                        <div class="preview-thumbnail">
-                                            <img src="{{ URL::asset('images/users/' . $message->user->profile->image) }}"
-                                                alt="image" class="rounded-circle profile-pic">
-                                        </div>
-                                        @endif 
+                                                <div class="preview-thumbnail">
+                                                    <img src="{{ URL::asset('images/dashboard/faces/face2.jpg') }}"
+                                                        alt="image" class="rounded-circle profile-pic">
+                                                </div>
+                                            @else
+                                                <div class="preview-thumbnail">
+                                                    <img src="{{ URL::asset('images/users/' . $message->user->profile->image) }}"
+                                                        alt="image" class="rounded-circle profile-pic">
+                                                </div>
+                                        @endif
                                         <div class="preview-item-content">
                                             <p class="preview-subject ellipsis mb-1">{{ $message->user->name }}
-                                                  sent you a message</p>
+                                                sent you a message</p>
                                             <p class="text-muted mb-0"> 1 Minutes ago </p>
                                         </div>
                                     </a>
@@ -364,13 +374,15 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
-                                
-                                <div class="navbar-profile">
-                                    @if(empty(Auth::user()->profile->image))
-                                    <img class="img-xs rounded-circle" src="{{ URL::asset('images/profile/scary.gif') }}" alt="">
-                                    @else
-                                    <img class="img-xs rounded-circle" src="{{ URL::asset('images/users/'.Auth::user()->profile->image) }}" alt="">
 
+                                <div class="navbar-profile">
+                                    @if (empty(Auth::user()->profile->image))
+                                        <img class="img-xs rounded-circle"
+                                            src="{{ URL::asset('images/profile/scary.gif') }}" alt="">
+                                    @else
+                                        <img class="img-xs rounded-circle"
+                                            src="{{ URL::asset('images/users/' . Auth::user()->profile->image) }}"
+                                            alt="">
                                     @endif
 
                                     <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}

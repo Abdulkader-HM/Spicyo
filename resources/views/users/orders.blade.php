@@ -78,6 +78,7 @@
                 <th> meal name</th>
                 <th> price</th>
                 <th> description</th>
+                <th> status</th>
 
                 <th>Edit</th>
                 <th>Delete</th>
@@ -91,7 +92,8 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->price }}</td>
                 <td>{{ $user->description }}</td>
-\
+                <td>{{ $user->status }}</td>
+
 
                 {{-- <td><a href="{{ route('user.edit',$user->id) }}" class="btn btn-secondary">Edit</a></td>
                 <td>

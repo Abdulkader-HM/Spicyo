@@ -140,6 +140,9 @@
                             <div class="full">
                                 <div class="right_header_info">
                                     <ul>
+                                        <i class="fa-solid fa-basket-shopping"></i>
+
+
                                         <li class="dinone">Contact Us : <img
                                                 style="margin-right: 15px;margin-left: 15px;"
                                                 src="{{ URL::asset('images/phone_icon.png') }}"

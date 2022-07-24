@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Food;
+use App\Models\food_user;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -91,10 +92,10 @@ class PagesController extends Controller
         //     $q->select('name', 'price');
         // }])->where('id', Auth::user()->id)->get();
 
-        $user = User::find(Auth::user()->id);
-        $sum = User::with('foods')->where(Auth::user()->id);
-        $users = $user->foods;
-        // return $users;
-        return view('users.orders', compact('users'));
+        $test = food_user::where('id',Auth::user()->id)->where('status','buy')->get();
+        $users = User::with('foods')->find(Auth::user()->id)->where('status','buy')->get();
+        // $users = $user;
+        return $users;
+        // return view('users.orders', compact('users'));
     }
 }

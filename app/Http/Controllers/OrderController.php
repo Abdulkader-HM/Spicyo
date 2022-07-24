@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Food;
 use App\Models\food_user;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -14,9 +15,19 @@ class OrderController extends Controller
     {
         food_user::create([
             'user_id' => Auth::user()->id,
-            'food_id' => $id
+            'food_id' => $id,
+            'status' => 'buy'
         ]);
 
         return 'done';
+    }
+
+    public function basket($id){
+        food_user::create([
+            'user_id' => Auth::user()->id,
+            'food_id' => $id,
+            'status' => 'basket'
+        ]);
+        return 'done meal added to the basket';
     }
 }

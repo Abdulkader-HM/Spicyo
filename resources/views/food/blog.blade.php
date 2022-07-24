@@ -50,10 +50,29 @@
                             @else
                                 <h4 style="color: blue"> Posted by {{ $food->user->name }}</h4>
                             @endif
-                            <form method="post" action="{{ route('order',$food->id) }}">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">buy</button>
-                            </form>
+
+
+
+                            <div class="right_header_info">
+                                <ul>
+                                    <li>
+                                        <form method="post" action="{{ route('order', $food->id) }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">buy</button>
+                                        </form>
+                                    </li>
+
+                                    <li>
+                                        <form method="post" action="{{ route('basket',$food->id) }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success">Add to basket</button>
+                                        </form>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
                             <br>
                         </div>
 

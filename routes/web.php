@@ -62,4 +62,6 @@ Route::controller(CallBackController::class)->group(function () {
 
 Route::controller(OrderController::class)->group(function () {
     Route::post('user/order/{id}', 'order')->name('order')->middleware('auth');
+    Route::post('user/add/to/basket/{id}', 'basket')->name('basket')->middleware('auth');
+
 });
