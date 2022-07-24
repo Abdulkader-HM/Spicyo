@@ -75,7 +75,7 @@
                             <a href="{{ route('blog') }}">All Meals</a>
                         </li>
                         <li>
-                            <a href="{{ route('contact') }}">Contact Us</a>
+                            <a href="{{ route('show/orders') }}">My Orders</a>
                         </li>
 
                         <li>

@@ -9,6 +9,7 @@ class Food extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'price', 'user_id', 'description', 'image'];
+    protected $hidden = ['pivot'];
     public function user()
     {
         return $this->belongsTo(User::class);

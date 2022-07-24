@@ -42,6 +42,7 @@ Route::controller(PagesController::class)->group(function () {
     Route::get('food/create', 'createMeal')->name('create.meal');
     Route::get('food/edit/{id}', 'editMeal')->name('food.edit');
     Route::post('food/update/{id}', 'updateMeal')->name('food.update');
+    Route::get('my/orders', 'orderPage')->name('show/orders');
 });
 
 Route::controller(ProfileController::class)->group(function () {

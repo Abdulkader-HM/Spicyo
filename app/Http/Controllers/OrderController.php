@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\food_user;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,7 @@ class OrderController extends Controller
 {
     public function order($id)
     {
-        Order::create([
+        food_user::create([
             'user_id' => Auth::user()->id,
             'food_id' => $id
         ]);
