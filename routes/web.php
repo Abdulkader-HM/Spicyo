@@ -5,7 +5,9 @@ use App\Http\Controllers\FoodController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Mail\TestEmail;
@@ -63,5 +65,18 @@ Route::controller(CallBackController::class)->group(function () {
 Route::controller(OrderController::class)->group(function () {
     Route::post('user/order/{id}', 'order')->name('order')->middleware('auth');
     Route::post('user/add/to/basket/{id}', 'basket')->name('basket')->middleware('auth');
-
 });
+
+Route::get('search', [SearchController::class, 'search'])->name('search');
+
+// Route::controller(PaymentController::class)->group(function () {
+//     Route::get('go-payment', 'goPayment')->name('payment.go');
+//     Route::get('payment', 'payment')->name('payment');
+//     Route::get('cancel', 'cancel')->name('payment.cancel');
+//     Route::get('payment/success', 'success')->name('payment.success');
+// });
+
+// Route::get('go-payment', [PapPalController::class, 'goPayment'])->name('payment.go');
+// Route::get('payment', [PapPalController::class, 'payment'])->name('payment');
+// Route::get('cancel', [PapPalController::class, 'cancel'])->name('payment.cancel');
+// Route::get('payment/success', [PapPalController::class, 'success'])->name('payment.success');

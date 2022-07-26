@@ -92,10 +92,9 @@ class PagesController extends Controller
         //     $q->select('name', 'price');
         // }])->where('id', Auth::user()->id)->get();
 
-        $test = food_user::where('id',Auth::user()->id)->where('status','buy')->get();
-        $users = User::with('foods')->find(Auth::user()->id)->where('status','buy')->get();
-        // $users = $user;
+        $users = User::with('foods')->where('id', Auth::user()->id)->get();
         return $users;
+
         // return view('users.orders', compact('users'));
     }
 }

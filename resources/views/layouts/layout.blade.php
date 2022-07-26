@@ -162,8 +162,8 @@
                                                 {{-- <a class="button" href="#">Register</a> --}}
                                             </li>
                                         @endif
-                                        <li><img style="margin-right: 15px;"
-                                                src="{{ URL::asset('images/search_icon.png') }}" alt="#"></li>
+                                        {{-- <li><img style="margin-right: 15px;"
+                                                src="{{ URL::asset('images/search_icon.png') }}" alt="#"></li> --}}
                                         <li>
                                             <button type="button" id="sidebarCollapse">
                                                 <img src="{{ URL::asset('images/menu_icon.png') }}" alt="#">
