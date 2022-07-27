@@ -63,6 +63,7 @@ Route::controller(CallBackController::class)->group(function () {
 });
 
 Route::controller(OrderController::class)->group(function () {
+    Route::get('user/order/page/{id}', 'orderPage')->name('order/page');
     Route::post('user/order/{id}', 'order')->name('order')->middleware('auth');
     Route::post('user/add/to/basket/{id}', 'basket')->name('basket')->middleware('auth');
 });

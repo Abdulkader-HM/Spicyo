@@ -9,7 +9,7 @@
                         <h2>Our Blog</h2>
                         <form method="get" action="{{ route('search') }}">
                             <input type="search" name="search">
-                            <button type="submit" class="btn btn-light" >search</button>
+                            <button type="submit" class="btn btn-light">search</button>
                         </form>
 
                     </div>
@@ -20,16 +20,29 @@
 
     <!-- blog -->
     <div class="blog">
+        {{-- @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif --}}
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="title">
-                        <i><img src="{{ URL::asset('images/title.png') }}" alt="#" /></i>
-
-                        <span>when looking at its layout. The point of using Lorem</span>
+                        <i><img src="{{ URL::asset('images/title.png') }}" alt="#" /></i><br>
+                        <br>
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                     </div>
+
                 </div>
             </div>
+
+
+
 
 
 
@@ -60,7 +73,7 @@
                                 <div class="right_header_info">
                                     <ul>
                                         <li>
-                                            <form method="post" action="{{ route('order', $food->id) }}">
+                                            <form method="get" action="{{ route('order/page', $food->id) }}">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">buy</button>
                                             </form>
