@@ -29,8 +29,8 @@
             </div>
 
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                <textarea class="textarea" placeholder="postcode" type="text"
-                 name="postcode"></textarea>
+                <input class="form-control" placeholder="postcode" type="text"
+                 name="postcode">
             </div>
 
             <p class="col-xl-12 col-lg-12 col-md-12 col-sm-12">

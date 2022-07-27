@@ -23,10 +23,10 @@ return new class extends Migration
             $table->string('meal_price');
             $table->integer('qty');
             $table->float('tax');
+            $table->float('total');
             $table->integer('discount')->default(0);
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-
         });
     }
 

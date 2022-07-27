@@ -77,27 +77,31 @@
                 <th>#</th>
                 <th> meal name</th>
                 <th> price</th>
-                <th> description</th>
-                <th> status</th>
+                <th> Quantity</th>
+                <th> Tax</th>
+                <th>TOTAL (after tax)</th>
+
 
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
-        @foreach ($users as $user)
+        @foreach ($orders as $order)
        
         <tbody>
             <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->price }}</td>
-                <td>{{ $user->description }}</td>
-                <td>{{ $user->status }}</td>
+                <td>{{ $order->id }}</td>
+                <td>{{ $order->meal_name }}</td>
+                <td>{{ $order->meal_price }}</td>
+                <td>{{ $order->qty }}</td>
+                <td>{{ $order->tax }}</td>
+                <td>{{ $order->total }}</td>
 
 
-                {{-- <td><a href="{{ route('user.edit',$user->id) }}" class="btn btn-secondary">Edit</a></td>
+
+                {{-- <td><a href="{{ route('order.edit',$order->id) }}" class="btn btn-secondary">Edit</a></td>
                 <td>
-                    <form method="user" action="{{ route('delete',$user->id) }}">
+                    <form method="order" action="{{ route('delete',$order->id) }}">
                         @method('DELETE')
                         @csrf
 
@@ -109,8 +113,8 @@
         </tbody>
 
         @endforeach
-        {{-- {!! $myusers->links('pagination::bootstrap-4') !!} --}}
-        {{-- {!! $myusers->render() !!} --}}
+        {!! $orders->links('pagination::bootstrap-4') !!}
+        {{-- {!! $myorders->render() !!} --}}
     </table>
     
 </div>

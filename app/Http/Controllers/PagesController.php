@@ -86,15 +86,15 @@ class PagesController extends Controller
         return redirect()->route('control');
     }
 
-    public function orderPage()
-    {
-        // $users = User::with(['foods' => function ($q) {
-        //     $q->select('name', 'price');
-        // }])->where('id', Auth::user()->id)->get();
+    // public function orderPage()
+    // {
+    //     // $users = User::with(['foods' => function ($q) {
+    //     //     $q->select('name', 'price');
+    //     // }])->where('id', Auth::user()->id)->get();
 
-        $users = User::with('foods')->where('id', Auth::user()->id)->get();
-        return $users;
+    //     $users = User::with('foods')->where('id', Auth::user()->id)->get();
+    //     return $users;
 
-        // return view('users.orders', compact('users'));
-    }
+    //     // return view('users.orders', compact('users'));
+    // }
 }

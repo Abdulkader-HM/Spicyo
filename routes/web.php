@@ -66,6 +66,7 @@ Route::controller(OrderController::class)->group(function () {
     Route::get('user/order/page/{id}', 'orderPage')->name('order/page');
     Route::post('user/order/{id}', 'order')->name('order')->middleware('auth');
     Route::post('user/add/to/basket/{id}', 'basket')->name('basket')->middleware('auth');
+    Route::get('show/my/orders', 'myOrders')->name('my/orders');
 });
 
 Route::get('search', [SearchController::class, 'search'])->name('search');

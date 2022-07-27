@@ -36,13 +36,20 @@ class OrderController extends Controller
             'city' => $request->city,
             'postcode' => $request->postcode,
             'meal_name' => $meal->name,
-            'meal_price' => $price + $tax,
+            'meal_price' => $meal->price,
+            'total' => $price + $tax,
             'qty' => $qty,
             'tax' => $tax,
 
         ]);
 
         return redirect()->route('blog')->with('success', 'your order has been added successfully to database');
+    }
+
+    public function myOrders()
+    {
+        $orders = Order::where('user_id', Auth::user()->id)->paginate(5);
+        return view('users.orders', compact('orders'));
     }
 
     // public function basket($id){
