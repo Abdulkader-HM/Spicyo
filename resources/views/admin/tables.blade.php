@@ -1,6 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('dashboard')
+
     <div class="container-scroller">
 
 
@@ -72,8 +73,8 @@
                     <div class="col-lg-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Hoverable Table</h4>
-                                <p class="card-description"> Add class <code>.table-hover</code>
+                                <h4 class="card-title">(Confirm / Cancel) Orders</h4>
+                                {{-- <p class="card-description">  <code>.table-hover</code> --}}
                                 </p>
                                 <div class="table-responsive">
                                     <table class="table table-hover">
@@ -82,40 +83,49 @@
                                                 <th>User</th>
                                                 <th>Product</th>
                                                 <th>Sale</th>
+                                                <th>Quantity</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Jacob</td>
-                                                <td>Photoshop</td>
-                                                <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
-                                                <td><label class="badge badge-danger">Pending</label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Messsy</td>
-                                                <td>Flash</td>
-                                                <td class="text-danger"> 21.06% <i class="mdi mdi-arrow-down"></i></td>
-                                                <td><label class="badge badge-warning">In progress</label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>John</td>
-                                                <td>Premier</td>
-                                                <td class="text-danger"> 35.00% <i class="mdi mdi-arrow-down"></i></td>
-                                                <td><label class="badge badge-info">Fixed</label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Peter</td>
-                                                <td>After effects</td>
-                                                <td class="text-success"> 82.00% <i class="mdi mdi-arrow-up"></i></td>
-                                                <td><label class="badge badge-success">Completed</label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Dave</td>
-                                                <td>53275535</td>
-                                                <td class="text-success"> 98.05% <i class="mdi mdi-arrow-up"></i></td>
-                                                <td><label class="badge badge-warning">In progress</label></td>
-                                            </tr>
+                                            @if (isset($orders) && $orders->count() > 0)
+                                                @foreach ($orders as $order)
+                                                    <tr>
+
+                                                        <td>{{ $order->user->name }}</td>
+                                                        <td>{{ $order->meal_name }}</td>
+                                                        <td class="text-danger"> {{ $order->meal_price }}$
+                                                            {{-- <i class="mdi mdi-arrow-down"></i> --}}
+                                                        </td>
+                                                        <td>{{ $order->qty }}</td>
+
+                                                        @if ($order->status === 'ordered')
+                                                            <td>
+                                                                <form method="post" action="{{ route('confirm/order',$order->id) }}">
+                                                                    @csrf
+
+                                                                    <button type="submit"
+                                                                        class="btn btn-success">confirm</button>
+                                                                </form>
+
+                                                            </td>
+                                                        @else
+                                                            <td>
+                                                                <form method="post" action="{{ route('cancel/order',$order->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger">cancel</button>
+                                                                </form>
+
+
+                                                            </td>
+                                                        @endif
+
+
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -136,7 +146,9 @@
                                                 <th> First name </th>
                                                 <th> Progress </th>
                                                 <th> Email </th>
+                                                <th> type</th>
                                                 <th> Created at </th>
+                                                <th> Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -161,90 +173,28 @@
                                                     </td>
                                                     {{-- <td> $ 77.99 </td> --}}
                                                     <td>{{ $user->email }}</td>
+                                                    @if ($user->is_admin === 1)
+                                                        <td>Admin</td>
+                                                    @else
+                                                        <td>User</td>
+                                                    @endif
 
                                                     <td> {{ $user->created_at }} </td>
+                                                    @if ($user->is_admin === 0)
+                                                        <td>
+                                                            <form method="get"
+                                                                action="{{ route('delete/user', $user->id) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Delete</button>
+                                                            </form>
+                                                        </td>
+                                                    @endif
                                                 </tr>
                                             @endforeach
                                             {!! $users->links('pagination::bootstrap-4') !!}
 
-                                            {{-- <tr>
-                            <td class="py-1">
-                              <img src="{{ URL::asset('images/dashboard/faces-clipart/pic-2.png') }}" alt="image" />
-                            </td>
-                            <td> Messsy Adam </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td> $245.30 </td>
-                            <td> July 1, 2015 </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="{{ URL::asset('images/dashboard/faces-clipart/pic-3.png') }}" alt="image" />
-                            </td>
-                            <td> John Richards </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td> $138.00 </td>
-                            <td> Apr 12, 2015 </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="{{ URL::asset('images/dashboard/faces-clipart/pic-4.png') }}" alt="image" />
-                            </td>
-                            <td> Peter Meggik </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td> $ 77.99 </td>
-                            <td> May 15, 2015 </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="{{ URL::asset('images/dashboard/faces-clipart/pic-1.png') }}" alt="image" />
-                            </td>
-                            <td> Edward </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td> $ 160.25 </td>
-                            <td> May 03, 2015 </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="{{ URL::asset('images/dashboard/faces-clipart/pic-2.png') }}" alt="image" />
-                            </td>
-                            <td> John Doe </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td> $ 123.21 </td>
-                            <td> April 05, 2015 </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="{{ URL::asset('images/dashboard/faces-clipart/pic-3.png') }}" alt="image" />
-                            </td>
-                            <td> Henry Tom </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td> $ 150.00 </td>
-                            <td> June 16, 2015 </td>
-                          </tr> --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -514,20 +464,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
     <script src="{{ URL::asset('vendors/js/vendor.bundle.base.js') }}"></script>
     <script src="{{ URL::asset('js/dashboard/off-canvas.js') }}"></script>
     <script src="{{ URL::asset('js/dashboard/hoverable-collapse.js') }}"></script>
     <script src="{{ URL::asset('js/dashboard/misc.js') }}"></script>
     <script src="{{ URL::asset('js/dashboard/settings.js') }}"></script>
     <script src="{{ URL::asset('js/dashboard/todolist.js') }}"></script>
+
+
 @endsection

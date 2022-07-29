@@ -25,6 +25,7 @@ return new class extends Migration
             $table->float('tax');
             $table->float('total');
             $table->integer('discount')->default(0);
+            $table->string('status');
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
         });

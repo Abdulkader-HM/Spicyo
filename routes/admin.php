@@ -28,5 +28,10 @@ Route::group(['middleware' => 'auth', 'middleware' => 'is_admin', 'prefix' => 'a
         Route::get('tables', 'tables')->name('admin/tables');
         Route::get('chart', 'chart')->name('admin/chart');
         Route::post('task', 'addTask')->name('admin/task');
+        Route::get('delete/user/{id}', 'deleteUser')->name('delete/user');
+        Route::get('create/user/page', 'createUserPage')->name('create/page');
+        Route::post('create/user', 'createUser')->name('create/user');
+        Route::post('confirm/order/{id}', 'confirmOrder')->name('confirm/order');
+        Route::post('cancel/order/{id}', 'cancelOrder')->name('cancel/order');
     });
 });

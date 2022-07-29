@@ -3,9 +3,12 @@
 
 <head>
     <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin Dashboard</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('images/logo.png') }}">
+
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ URL::asset('vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendors/css/vendor.bundle.base.css') }}">
@@ -29,7 +32,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ URL::asset('css/dashboard/style.css') }}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ URL::asset('images/dashboard/favicon.png') }}" />
+    {{-- <link rel="shortcut icon" href="{{ URL::asset('images/dashboard/favicon.png') }}" /> --}}
 </head>
 
 <body>
@@ -44,9 +47,10 @@
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                <a class="sidebar-brand brand-logo" href="index.html"><img
-                        src="{{ URL::asset('images/dashboard/logo.svg') }}" alt="logo" /></a>
-                <a class="sidebar-brand brand-logo-mini" href="index.html"><img
+                <a class="sidebar-brand brand-logo" href="{{ route('home') }}">
+                    <img src="{{ URL::asset('images/logo.png') }}" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo-mini" href="{{ route('home') }}">
+                    <img
                         src="{{ URL::asset('images/dashboard/logo-mini.svg') }}" alt="logo" /></a>
             </div>
             <ul class="nav">
@@ -239,6 +243,7 @@
                                 aria-labelledby="createbuttonDropdown">
                                 <h6 class="p-3 mb-0">Projects</h6>
                                 <div class="dropdown-divider"></div>
+
                                 <a class="dropdown-item preview-item" href="{{ route('create.meal') }}">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-dark rounded-circle">
@@ -249,15 +254,17 @@
                                         <p class="preview-subject ellipsis mb-1">Create New Meal</p>
                                     </div>
                                 </a>
+
+
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
+                                <a class="dropdown-item preview-item" href="{{ route('create/page') }}">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-dark rounded-circle">
                                             <i class="mdi mdi-web text-info"></i>
                                         </div>
                                     </div>
                                     <div class="preview-item-content">
-                                        <p class="preview-subject ellipsis mb-1">UI Development</p>
+                                        <p class="preview-subject ellipsis mb-1">Create new user</p>
                                     </div>
                                 </a>
                                 <div class="dropdown-divider"></div>

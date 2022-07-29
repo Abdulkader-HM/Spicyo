@@ -40,6 +40,7 @@ class OrderController extends Controller
             'total' => $price + $tax,
             'qty' => $qty,
             'tax' => $tax,
+            'status'=>'ordered',
 
         ]);
 

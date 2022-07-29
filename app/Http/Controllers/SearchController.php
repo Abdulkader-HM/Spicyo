@@ -10,7 +10,7 @@ class SearchController extends Controller
     public function search()
     {
         $search = $_GET['search'];
-        $foods = Food::where('name', 'LIKE', '%' . $search . '%')->get();
+        $foods = Food::where('name', 'LIKE', '%' . $search . '%')->orwhere('price', 'LIKE', '%' . $search . '%')->get();
 
         return view('food.search', compact('foods'));
     }
