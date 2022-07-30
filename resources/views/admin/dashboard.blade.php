@@ -457,10 +457,20 @@
                                 @if (isset($messages) && $messages->count() > 0)
                                     @foreach ($messages as $message)
                                         <div class="preview-item border-bottom">
+
+                                            @if($message->user->profile->image->count()>0)
                                             <div class="preview-thumbnail">
                                                 <img src="{{ URL::asset('images/users/' . $message->user->profile->image) }}"
                                                     alt="image" class="rounded-circle" />
                                             </div>
+                                            @else
+                                            <div class="preview-thumbnail">
+                                                <img src="{{ URL::asset('images/profile/scary.gif') }}"
+                                                    alt="image" class="rounded-circle" />
+                                            </div>
+                                            @endif
+
+
                                             <div class="preview-item-content d-flex flex-grow">
                                                 <div class="flex-grow">
                                                     <div class="d-flex d-md-block d-xl-flex justify-content-between">
