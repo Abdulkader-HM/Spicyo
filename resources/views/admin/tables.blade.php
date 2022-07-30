@@ -173,7 +173,7 @@
                                                     </td>
                                                     {{-- <td> $ 77.99 </td> --}}
                                                     <td>{{ $user->email }}</td>
-                                                    @if ($user->is_admin === 1)
+                                                    @if ($user->is_admin == 1)
                                                         <td>Admin</td>
                                                     @else
                                                         <td>User</td>

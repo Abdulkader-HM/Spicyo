@@ -50,7 +50,7 @@
                                 </div>
                                 <h3>{{ $food->name }}</h3>
                                 <p>{{ $food->description }} </p>
-                                @if ($food->user->is_admin === 1)
+                                @if ($food->user->is_admin == 1)
                                     <h4 style="color: red"> Posted by Admin </h4>
                                 @else
                                     <h4 style="color: blue"> Posted by {{ $food->user->name }}</h4>

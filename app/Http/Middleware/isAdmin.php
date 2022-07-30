@@ -25,7 +25,7 @@ class isAdmin
 
         if (!(Auth::user())) {
             return redirect('login');
-        } elseif (!(Auth::user()->is_admin === 1)) {
+        } elseif (!(Auth::user()->is_admin == 1)) {
             return redirect('login');
         } else {
             return $next($request);

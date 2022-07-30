@@ -207,7 +207,7 @@
 
             @section('footer')
                 <!-- footer -->
-                <footer>
+                <fooeter>
                     <div class="footer">
                         <div class="container-fluid">
                             <div class="row">
@@ -288,7 +288,7 @@
                             </div>
                         </div>
                     </div>
-                </footer>
+                </fooeter>
                 <!-- end footer -->
 
             @show

@@ -27,7 +27,7 @@
         {{-- <p>User interface designer and <br/> front-end developer</p> --}}
         <div class="buttons">
 
-            @if (Auth::user()->is_admin === 1)
+            @if (Auth::user()->is_admin == 1)
                 <form method="get" action="{{ route('admin/index') }}">
                     <button class="primary">
                         Dashboard
