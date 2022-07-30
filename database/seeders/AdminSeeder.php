@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
     {
         $admin = [
 
-            ['name' => 'Admin', 'email' => 'admin@admin.com', 'password' => '$2y$10$m7ZVDmTVf2a1hrJ9R/D4k.l3ZYGwL8BXCloJa/EaEFRcgeKOzc0K6', 'is_admin' => '1', 'email_verified_at' => '2022-07-28 22:54:55']
+            ['name' => 'Admin', 'email' => 'admin@admin.com', 'password' => '$2y$10$m7ZVDmTVf2a1hrJ9R/D4k.l3ZYGwL8BXCloJa/EaEFRcgeKOzc0K6', 'is_admin' => 1, 'email_verified_at' => '2022-07-28 22:54:55']
         ];
         User::insert($admin);
     }
