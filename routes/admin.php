@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth', 'middleware' => 'is_admin', 'prefix' => 'a
     // Route::get('index', [AdminController::class, 'index'])->name('admin/index');
     Route::controller(AdminController::class)->group(function () {
         Route::get('layout', 'app')->name('admin/layout');
-        Route::get('index', 'index')->name('admin/index');
+        Route::get('admin/index', 'index')->name('admin/index');
         Route::get('tables', 'tables')->name('admin/tables');
         Route::get('chart', 'chart')->name('admin/chart');
         Route::post('task', 'addTask')->name('admin/task');
@@ -35,3 +35,4 @@ Route::group(['middleware' => 'auth', 'middleware' => 'is_admin', 'prefix' => 'a
         Route::post('cancel/order/{id}', 'cancelOrder')->name('cancel/order');
     });
 });
+Route::get('test', [AdminController::class,'test']);

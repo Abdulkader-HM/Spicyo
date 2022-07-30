@@ -29,7 +29,7 @@ class AdminController extends Controller
     public function tables()
     {
         $users = User::paginate(6);
-        $orders = Order::where('status','ordered')->orWhere('status','confirm')->paginate(5);
+        $orders = Order::where('status', 'ordered')->orWhere('status', 'confirm')->paginate(5);
         return view('admin.tables', compact('users', 'orders'));
     }
 
@@ -86,5 +86,11 @@ class AdminController extends Controller
     {
         $delete = User::destroy($id);
         return redirect()->back();
+    }
+
+    public function test()
+    {
+        $test = Auth::user()->is_admin;
+        return $test;
     }
 }

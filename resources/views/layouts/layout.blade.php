@@ -58,69 +58,93 @@
 
 
 
-                @if (Auth::user())
-                
-                    <ul class="list-unstyled components">
 
-                        <li class="active">
-                            <a href="{{ route('profile') }}">My Profile</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('create.meal') }}">Create meal</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('control') }}">My Meals</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('blog') }}">All Meals</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('my/orders') }}">My Orders</a>
-                        </li>
+                @if (!Auth::user())
 
-                        <li>
-                            <form method="post" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Logout</button>
+                <ul class="list-unstyled components">
 
-                            </form>
-                        </li>
-                    </ul>
+                    <li class="active">
+                        <a href="{{ route('index') }}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('about') }}">About</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('recipe') }}">Recipe</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('blog') }}">All Meals</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('contact') }}">Contact Us</a>
+                    </li>
+                    {{-- <li>
+                        <form method="post" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Logout</button>
+
+                        </form>
+                    </li> --}}
+                </ul>
+
+
+                @elseif (Auth::user()->is_admin == 0)
+
+                <ul class="list-unstyled components">
+
+                    <li class="active">
+                        <a href="{{ route('profile') }}">My Profile</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('create.meal') }}">Create meal</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('control') }}">My Meals</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('blog') }}">All Meals</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('my/orders') }}">My Orders</a>
+                    </li>
+
+                    <li>
+                        <form method="post" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Logout</button>
+
+                        </form>
+                    </li>
+                </ul>
                 @else
-                    <ul class="list-unstyled components">
 
-                        <li class="active">
-                            <a href="{{ route('index') }}">Home</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('about') }}">About</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('recipe') }}">Recipe</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('blog') }}">All Meals</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('contact') }}">Contact Us</a>
-                        </li>
-                        {{-- <li>
-                            <form method="post" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Logout</button>
+                <ul class="list-unstyled components">
 
-                            </form>
-                        </li> --}}
-                    </ul>
+                    <li class="active">
+                        <a href="{{ route('profile') }}">My Profile</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('create.meal') }}">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('control') }}">My Meals</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('blog') }}">All Meals</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('my/orders') }}">My Orders</a>
+                    </li>
+
+                    <li>
+                        <form method="post" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Logout</button>
+
+                        </form>
+                    </li>
+                </ul>
                 @endif
-
-
-
-
-
-
-
-
 
             </nav>
         </div>
