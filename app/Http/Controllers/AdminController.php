@@ -15,16 +15,17 @@ class AdminController extends Controller
     public function app()
     {
 
-        $msgs = CallBack::latest()->paginate(4);
+        $msgs = CallBack::paginate(4);
         return view('layouts.admin.app', compact('msgs'));
     }
 
     public function index()
     {
         $users = User::get();
-        $tasks = AddTo::latest()->paginate(5);
-        $messages = CallBack::latest()->paginate(5);
+        $tasks = AddTo::paginate(5);
+        $messages = CallBack::paginate(5);
         return view('admin.dashboard', compact('tasks', 'messages', 'users'));
+        // return $tasks;
     }
     public function tables()
     {
@@ -87,5 +88,4 @@ class AdminController extends Controller
         $delete = User::destroy($id);
         return redirect()->back();
     }
-
 }

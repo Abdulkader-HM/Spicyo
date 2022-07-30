@@ -458,16 +458,16 @@
                                     @foreach ($messages as $message)
                                         <div class="preview-item border-bottom">
 
-                                            @if($message->user->profile->image->count()>0)
-                                            <div class="preview-thumbnail">
-                                                <img src="{{ URL::asset('images/users/' . $message->user->profile->image) }}"
-                                                    alt="image" class="rounded-circle" />
-                                            </div>
+                                            @if (!empty($message->user->profile->image))
+                                                <div class="preview-thumbnail">
+                                                    <img src="{{ URL::asset('images/users/' . $message->user->profile->image) }}"
+                                                        alt="image" class="rounded-circle" />
+                                                </div>
                                             @else
-                                            <div class="preview-thumbnail">
-                                                <img src="{{ URL::asset('images/profile/scary.gif') }}"
-                                                    alt="image" class="rounded-circle" />
-                                            </div>
+                                                <div class="preview-thumbnail">
+                                                    <img src="{{ URL::asset('images/profile/scary.gif') }}" alt="image"
+                                                        class="rounded-circle" />
+                                                </div>
                                             @endif
 
 
@@ -552,7 +552,7 @@
                             </form>
 
 
-                            @if (isset($tasks) && $tasks->count() > 0)
+                            @if (isset($tasks) && !empty($tasks))
                                 <div class="list-wrapper">
                                     <ul class="d-flex flex-column-reverse text-white todo-list todo-list-custom">
                                         @foreach ($tasks as $task)
