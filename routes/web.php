@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CallBackController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\NewsController;
@@ -29,7 +30,6 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
 
 Route::controller(PagesController::class)->group(function () {
