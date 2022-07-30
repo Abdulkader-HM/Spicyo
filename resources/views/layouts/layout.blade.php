@@ -124,7 +124,7 @@
                         <a href="{{ route('profile') }}">My Profile</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin/index') }}">Dashboard</a>
+                        <a href="{{ route('test') }}">Dashboard</a>
                     </li>
                     <li>
                         <a href="{{ route('control') }}">My Meals</a>

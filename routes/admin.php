@@ -11,9 +11,9 @@ use App\Mail\TestEmail;
 use Illuminate\Support\Facades\Mail;
 
 
-Route::get('admin/test', function () {
-    return 'welcome admin';
-});
+// Route::get('admin/test', function () {
+//     return 'welcome admin';
+// });
 
 
 Auth::routes(['verify' => true]);
@@ -21,7 +21,6 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
 
 Route::group(['middleware' => 'auth', 'middleware' => 'is_admin', 'prefix' => 'admin'], function () {
-    // Route::get('index', [AdminController::class, 'index'])->name('admin/index');
     Route::controller(AdminController::class)->group(function () {
         Route::get('layout', 'app')->name('admin/layout');
         Route::get('admin/index', 'index')->name('admin/index');
@@ -35,4 +34,4 @@ Route::group(['middleware' => 'auth', 'middleware' => 'is_admin', 'prefix' => 'a
         Route::post('cancel/order/{id}', 'cancelOrder')->name('cancel/order');
     });
 });
-Route::get('test', [AdminController::class,'test']);
+Route::get('test', [AdminController::class,'index'])->name('test');
