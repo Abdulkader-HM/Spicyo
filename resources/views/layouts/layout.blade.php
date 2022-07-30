@@ -124,7 +124,7 @@
                         <a href="{{ route('profile') }}">My Profile</a>
                     </li>
                     <li>
-                        <a href="{{ route('test') }}">Dashboard</a>
+                        <a href="{{ route('admin/index') }}">Dashboard</a>
                     </li>
                     <li>
                         <a href="{{ route('control') }}">My Meals</a>
@@ -207,7 +207,7 @@
 
             @section('footer')
                 <!-- footer -->
-                <fooetr>
+                <footer>
                     <div class="footer">
                         <div class="container-fluid">
                             <div class="row">
@@ -233,7 +233,8 @@
                                                     name="phone">
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                                <textarea class="textarea" placeholder="Message" type="text" name="message"></textarea>
+                                                <textarea class="textarea" placeholder="Message" type="text"
+                                                 name="message"></textarea>
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                                 <button class="send">Send</button>
@@ -287,7 +288,7 @@
                             </div>
                         </div>
                     </div>
-                </fooetr>
+                </footer>
                 <!-- end footer -->
 
             @show

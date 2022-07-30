@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Mail;
 // });
 
 
-// Auth::routes(['verify' => true]);
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
+Auth::routes(['verify' => true]);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
 
 Route::group(['middleware' => 'auth', 'middleware' => 'is_admin', 'prefix' => 'admin'], function () {
     Route::controller(AdminController::class)->group(function () {
@@ -33,4 +33,3 @@ Route::group(['middleware' => 'auth', 'middleware' => 'is_admin', 'prefix' => 'a
         Route::post('cancel/order/{id}', 'cancelOrder')->name('cancel/order');
     });
 });
-Route::get('test', [AdminController::class,'index'])->name('test');

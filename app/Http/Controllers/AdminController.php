@@ -88,9 +88,4 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function test()
-    {
-        $test = Auth::user()->is_admin;
-        return $test;
-    }
 }
