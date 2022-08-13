@@ -64,6 +64,12 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    public function deleteTask($id)
+    {
+        AddTo::destroy($id);
+        return redirect()->back();
+    }
+
     public function createUserPage()
     {
         return view('admin.create_user');

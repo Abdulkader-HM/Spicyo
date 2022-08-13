@@ -11,11 +11,6 @@ use App\Mail\TestEmail;
 use Illuminate\Support\Facades\Mail;
 
 
-// Route::get('admin/test', function () {
-//     return 'welcome admin';
-// });
-
-
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
 
@@ -31,5 +26,6 @@ Route::group(['middleware' => 'auth', 'middleware' => 'is_admin', 'prefix' => 'a
         Route::post('create/user', 'createUser')->name('create/user');
         Route::post('confirm/order/{id}', 'confirmOrder')->name('confirm/order');
         Route::post('cancel/order/{id}', 'cancelOrder')->name('cancel/order');
+        Route::get('delete/task/{id}', 'deleteTask')->name('delete/task');
     });
 });

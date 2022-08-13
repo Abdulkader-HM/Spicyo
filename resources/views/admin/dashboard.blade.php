@@ -560,16 +560,25 @@
                                                 <div class="form-check form-check-primary">
                                                     <label class="form-check-label">
                                                         <input class="checkbox" type="checkbox">
-                                                        {{ $task->task }}</label>
+                                                        {{ $task->task }}
+                                                    </label>
+
+
+                                                    <form action="{{ route('delete/task', $task->id) }}" method="get">
+                                                        @csrf
+                                                        @method('DELETE')
+
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="remove mdi mdi-close-box"></i>
+
+                                                        </button>
+
+
+
+                                                    </form>
+
+
                                                 </div>
-
-                                                <form action="" method="post">
-                                                    <button type="submit" class="awesom -bottom-3">
-                                                        <i class="remove mdi mdi-close-box"></i>
-
-                                                    </button>
-
-                                                </form>
                                             </li>
                                         @endforeach
                                         {!! $tasks->links('pagination::bootstrap-4') !!}

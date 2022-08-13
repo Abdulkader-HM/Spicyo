@@ -99,7 +99,7 @@
                                                         </td>
                                                         <td>{{ $order->qty }}</td>
 
-                                                        @if ($order->status === 'ordered')
+                                                        @if ($order->status == 'ordered')
                                                             <td>
                                                                 <form method="post" action="{{ route('confirm/order',$order->id) }}">
                                                                     @csrf
@@ -180,7 +180,7 @@
                                                     @endif
 
                                                     <td> {{ $user->created_at }} </td>
-                                                    @if ($user->is_admin === 0)
+                                                    @if ($user->is_admin == 0)
                                                         <td>
                                                             <form method="get"
                                                                 action="{{ route('delete/user', $user->id) }}">
