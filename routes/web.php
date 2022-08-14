@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Mail\TestEmail;
 use Illuminate\Support\Facades\Mail;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Mail;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', function () {
     return view('food.index');
@@ -70,15 +72,3 @@ Route::controller(OrderController::class)->group(function () {
 });
 
 Route::get('search', [SearchController::class, 'search'])->name('search');
-
-// Route::controller(PaymentController::class)->group(function () {
-//     Route::get('go-payment', 'goPayment')->name('payment.go');
-//     Route::get('payment', 'payment')->name('payment');
-//     Route::get('cancel', 'cancel')->name('payment.cancel');
-//     Route::get('payment/success', 'success')->name('payment.success');
-// });
-
-// Route::get('go-payment', [PapPalController::class, 'goPayment'])->name('payment.go');
-// Route::get('payment', [PapPalController::class, 'payment'])->name('payment');
-// Route::get('cancel', [PapPalController::class, 'cancel'])->name('payment.cancel');
-// Route::get('payment/success', [PapPalController::class, 'success'])->name('payment.success');

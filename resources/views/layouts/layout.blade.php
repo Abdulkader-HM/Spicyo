@@ -121,7 +121,7 @@
                 <ul class="list-unstyled components">
 
                     <li class="active">
-                        <a href="{{ route('profile') }}">My Profile</a>
+                        <a href="{{ route('profile') }}">{{ __('My Profile') }}</a>
                     </li>
                     <li>
                         <a href="{{ route('admin/index') }}">Dashboard</a>
@@ -164,10 +164,21 @@
                             <div class="full">
                                 <div class="right_header_info">
                                     <ul>
+
+
+                                        {{-- <ul>
+                                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                <li>
+                                                    <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                        {{ $properties['native'] }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul> --}}
                                         <i class="fa-solid fa-basket-shopping"></i>
 
 
-                                        <li class="dinone">Contact Us : <img
+                                        <li class="dinone">{{ __('Contact Us') }} : <img
                                                 style="margin-right: 15px;margin-left: 15px;"
                                                 src="{{ URL::asset('images/phone_icon.png') }}"
                                                 alt="tel:00963947032440"><a>00963947032440</a></li>
@@ -178,7 +189,7 @@
                                         <li class="dinone"><img
                                                 style="margin-right: 15px;height: 21px;position: relative;top: -2px;"
                                                 src="{{ URL::asset('images/location_icon.png') }}"
-                                                alt="#"><a>Alexandria-Egypt</a></li>
+                                                alt="#"><a>{{ __('Alexandria-Egypt') }}</a></li>
                                         @if (Auth::user())
                                         @else
                                             <li class="button_user">
