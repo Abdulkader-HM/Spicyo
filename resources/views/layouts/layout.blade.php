@@ -10,7 +10,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
     <title>Spicyo</title>
-    <link rel="shortcut icon" type="image/x-icon" href='images/logo.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href='images/logo.png'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="keywords" content="">
@@ -63,7 +63,7 @@
                     <ul class="list-unstyled components">
 
                         <li class="active">
-                            <a href="{{ route('index') }}">Home</a>
+                            <a href="{{ route('main') }}">Home</a>
                         </li>
                         <li>
                             <a href="{{ route('about') }}">About</a>
@@ -151,8 +151,8 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="full">
-                                <a class="logo" href="{{ route('index') }}"><img
-                                        src="{{ URL::asset('images/logo.png') }}" alt="#" /></a>
+                                <a class="logo" href="{{ route('main') }}"><img
+                                        src="images/logo.png" alt="#" /></a>
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -263,7 +263,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <ul class="lik">
-                                        <li class="active"> <a href="{{ route('index') }}">Home</a></li>
+                                        <li class="active"> <a href="{{ route('main') }}">Home</a></li>
                                         <li> <a href="{{ route('about') }}">About</a></li>
                                         <li> <a href="{{ route('recipe') }}">Recipe</a></li>
                                         <li> <a href="{{ route('blog') }}">Blog</a></li>
