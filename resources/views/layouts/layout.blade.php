@@ -323,13 +323,13 @@
     </div>
     <div class="overlay"></div>
     <!-- Javascript files-->
-    <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
-    <script src="{{ URL::asset('js/popper.min.js') }}"></script>
-    <script src="{{ URL::asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ URL::asset('js/owl.carousel.min.js') }}"></script>
-    <script src="{{ URL::asset('js/custom.js') }}"></script>
-    <script src="{{ URL::asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-    <script src="{{ URL::asset('js/jquery-3.0.0.min.js') }}"></script>
+    <script src='js/jquery.min.js'></script>
+    <script src='js/popper.min.js'></script>
+    <script src='js/bootstrap.bundle.min.js'></script>
+    <script src='js/owl.carousel.min.js'></script>
+    <script src='js/custom.js'></script>
+    <script src='js/jquery.mCustomScrollbar.concat.min.js'></script>
+    <script src='js/jquery-3.0.0.min.js'></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $("#sidebar").mCustomScrollbar({
