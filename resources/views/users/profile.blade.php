@@ -1,6 +1,4 @@
-@extends('layouts.layout')
 
-@section('cont')
     <br>
     <br>
     <div class="card-container">
@@ -68,7 +66,4 @@
 		</ul> --}}
         </div>
     </div>
-@endsection
 
-@section('footer')
-@endsection

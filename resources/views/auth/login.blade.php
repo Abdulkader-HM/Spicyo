@@ -26,8 +26,7 @@
 
 
 {{-- ---------------------------------------------------------------------------------------------- --}}
-@extends('layouts.layout')
-@section('cont')
+@include('layouts.head')
     <div class="section">
         <div class="container">
             <div class="row full-height justify-content-center">
@@ -167,4 +166,4 @@
             </div>
         </div>
     </div>
-@endsection
+

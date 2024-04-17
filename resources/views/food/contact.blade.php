@@ -1,4 +1,6 @@
-@extends('layouts.layout')
-@section('cont')
+@include('layouts.head')
+@include('layouts.header')
 
-@endsection
+
+@include('layouts.footer')
+@include('layouts.js')

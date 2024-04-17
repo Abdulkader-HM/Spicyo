@@ -1,6 +1,5 @@
-@extends('layouts.layout')
-
-@section('cont')
+@include('layouts.head')
+@include('layouts.header')
     <div class="yellow_bg">
         <div class="container">
             <div class="row">
@@ -135,4 +134,5 @@
         </div>
     </div>
     <!-- end blog -->
-@endsection()
+@include('layouts.footer')
+@include('layouts.js')

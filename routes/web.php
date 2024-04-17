@@ -15,17 +15,6 @@ use App\Mail\TestEmail;
 use Illuminate\Support\Facades\Mail;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 
 Route::get('/', function () {
     return view('food.index');
@@ -35,17 +24,17 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
 
 Route::controller(PagesController::class)->group(function () {
-    Route::get('food/index', 'index')->name('index');
-    Route::get('food/about', 'about')->name('about');
-    Route::get('food/blog', 'blog')->name('blog');
-    Route::get('food/recipe', 'recipe')->name('recipe');
-    Route::get('food/contact', 'contact')->name('contact');
-    Route::post('food/store', 'store')->name('food.store');
-    Route::get('food/control', 'control')->name('control')->middleware('auth');
-    Route::get('food/destroy/{id}', 'destroy')->name('delete');
-    Route::get('food/create', 'createMeal')->name('create.meal');
-    Route::get('food/edit/{id}', 'editMeal')->name('food.edit');
-    Route::post('food/update/{id}', 'updateMeal')->name('food.update');
+    Route::get('index', 'index')->name('index');
+    Route::get('about', 'about')->name('about');
+    Route::get('blog', 'blog')->name('blog');
+    Route::get('recipe', 'recipe')->name('recipe');
+    Route::get('contact', 'contact')->name('contact');
+    Route::post('store', 'store')->name('food.store');
+    Route::get('control', 'control')->name('control')->middleware('auth');
+    Route::get('destroy/{id}', 'destroy')->name('delete');
+    Route::get('create', 'createMeal')->name('create.meal');
+    Route::get('edit/{id}', 'editMeal')->name('food.edit');
+    Route::post('update/{id}', 'updateMeal')->name('food.update');
     Route::get('my/orders', 'orderPage')->name('show/orders');
 });
 

@@ -1,12 +1,12 @@
-@extends('layouts.layout')
-@section('cont')
+@include('layouts.head')
+@include('layouts.header')
 <div class="yellow_bg">
     <div class="container">
              <div class="row">
                 <div class="col-md-12">
                    <div class="title">
                       <h2>About</h2>
-                     
+
                    </div>
                 </div>
              </div>
@@ -18,8 +18,8 @@
        <div class="row">
           <div class="col-md-12">
               <div class="title">
-                 <i><img src="{{ URL::asset('images/title.png') }}" alt="#"/></i>
-                 
+                 <i><img src="images/title.png" alt="#"/></i>
+
                  <span>It is a long established fact that a reader will be distracted by the readable content of a
                     <br> page when looking at its layout. The point of using Lorem
                  </span>
@@ -38,10 +38,11 @@
               <div class="about_img">
                   <figure><img src="{{ URL::asset('images/about-img.jpg') }}" alt="#/"></figure>
               </div>
-          </div>      
-        </div> 
+          </div>
+        </div>
      </div>
  </div>
  <!-- end about -->
 
- @endsection
+@include('layouts.footer')
+@include('layouts.js')
