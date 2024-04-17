@@ -17,7 +17,6 @@ class CallBackController extends Controller
         // ]);
         CallBack::create([
             'name' => $request->name,
-            'user_id' => Auth::user()->id,
             'email' => $request->email,
             'phone' => $request->phone,
             'message' => $request->message

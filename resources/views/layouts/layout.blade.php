@@ -60,90 +60,85 @@
 
 
                 @if (!Auth::user())
+                    <ul class="list-unstyled components">
 
-                <ul class="list-unstyled components">
-
-                    <li class="active">
-                        <a href="{{ route('index') }}">Home</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('about') }}">About</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('recipe') }}">Recipe</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('blog') }}">All Meals</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('contact') }}">Contact Us</a>
-                    </li>
-                    {{-- <li>
+                        <li class="active">
+                            <a href="{{ route('index') }}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('about') }}">About</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('recipe') }}">Recipe</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('blog') }}">All Meals</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('contact') }}">Contact Us</a>
+                        </li>
+                        {{-- <li>
                         <form method="post" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="btn btn-danger">Logout</button>
 
                         </form>
                     </li> --}}
-                </ul>
-
-
+                    </ul>
                 @elseif (Auth::user()->is_admin == 0)
+                    <ul class="list-unstyled components">
 
-                <ul class="list-unstyled components">
+                        <li class="active">
+                            <a href="{{ route('profile') }}">My Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('create.meal') }}">Create meal</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('control') }}">My Meals</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('blog') }}">All Meals</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('my/orders') }}">My Orders</a>
+                        </li>
 
-                    <li class="active">
-                        <a href="{{ route('profile') }}">My Profile</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('create.meal') }}">Create meal</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('control') }}">My Meals</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('blog') }}">All Meals</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('my/orders') }}">My Orders</a>
-                    </li>
+                        <li>
+                            <form method="post" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Logout</button>
 
-                    <li>
-                        <form method="post" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="btn btn-danger">Logout</button>
-
-                        </form>
-                    </li>
-                </ul>
+                            </form>
+                        </li>
+                    </ul>
                 @else
+                    <ul class="list-unstyled components">
 
-                <ul class="list-unstyled components">
+                        <li class="active">
+                            <a href="{{ route('profile') }}">{{ __('My Profile') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin/index') }}">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('control') }}">My Meals</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('blog') }}">All Meals</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('my/orders') }}">My Orders</a>
+                        </li>
 
-                    <li class="active">
-                        <a href="{{ route('profile') }}">{{ __('My Profile') }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin/index') }}">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('control') }}">My Meals</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('blog') }}">All Meals</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('my/orders') }}">My Orders</a>
-                    </li>
+                        <li>
+                            <form method="post" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Logout</button>
 
-                    <li>
-                        <form method="post" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="btn btn-danger">Logout</button>
-
-                        </form>
-                    </li>
-                </ul>
+                            </form>
+                        </li>
+                    </ul>
                 @endif
 
             </nav>
@@ -167,7 +162,7 @@
 
 
                                         {{-- <ul>
-                                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                                 <li>
                                                     <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                                         {{ $properties['native'] }}
@@ -181,7 +176,7 @@
                                         <li class="dinone">{{ __('Contact Us') }} : <img
                                                 style="margin-right: 15px;margin-left: 15px;"
                                                 src="{{ URL::asset('images/phone_icon.png') }}"
-                                                alt="tel:00963947032440"><a>00963947032440</a></li>
+                                                alt="tel:004917623721083"><a>004917623721083</a></li>
                                         <li class="dinone"><img style="margin-right: 15px;"
                                                 src="{{ URL::asset('images/mail_icon.png') }}" alt="#"><a
                                                 href="mailto:Abdulkader.haj.mahmoud@gmail.com">Abdulkader.haj.mahmoud@gmail.com</a>
@@ -244,8 +239,7 @@
                                                     name="phone">
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                                <textarea class="textarea" placeholder="Message" type="text"
-                                                 name="message"></textarea>
+                                                <textarea class="textarea" placeholder="Message" type="text" name="message"></textarea>
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                                 <button class="send">Send</button>
@@ -292,19 +286,40 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="copyright">
-                            <div class="container">
-                                <p>© 2022 All Rights Reserved. Design by<a href="https://html.design/"> Abdulkader HM</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </fooeter>
-                <!-- end footer -->
+                        <center>
+                            <div class="copyright">
+                                <div class="container">
+                                    {{-- <p>© 2022 All Rights Reserved. Design by<a href="https://html.design/"> Abdulkader HM</a>
+                                    </p> --}}
+                                    <div class="content container">
+                                        <div class="row" style="width: 100px">
+                                            <div class="col-xs-12 text-center">
+                                                <a href="https://robotech-2c17d34363ef.herokuapp.com/">
+                                                    <img class="footer-logo" src='images/robotechlogo.png'
+                                                        alt="flameonepage Logo">
+                                                </a>
+                                            </div>
+                                        </div>
 
-            @show
+                                        <span class="copyright">Copy right © 2024 | Created by
+                                            <a href="https://robotech-2c17d34363ef.herokuapp.com/"
+                                                style="color: #32b427">RoboTech</a>
+
+                                        </span>
+                                    </div>
+                        </center>
+                    </div>
+
+            </div>
+        </div>
 
         </div>
+        </fooeter>
+        <!-- end footer -->
+
+    @show
+
+    </div>
     </div>
     <div class="overlay"></div>
     <!-- Javascript files-->

@@ -61,7 +61,7 @@ Route::controller(ProfileController::class)->group(function () {
 Route::post('user/newsletter', [NewsController::class, 'newsLetter'])->name('newsletter');
 
 Route::controller(CallBackController::class)->group(function () {
-    Route::post('user/message', 'saveMail')->name('message')->middleware('auth');
+    Route::post('user/message', 'saveMail')->name('message');
 });
 
 Route::controller(OrderController::class)->group(function () {

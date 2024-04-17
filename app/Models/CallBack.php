@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CallBack extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'email', 'user_id', 'phone', 'message'];
+    protected $fillable = ['name', 'email', 'phone', 'message'];
 
     public function user()
     {

@@ -12,8 +12,8 @@ class NewsController extends Controller
     {
         News::create([
             'email' => $request->email,
-            'user_id' => Auth::user()->id,
+            // 'user_id' => Auth::user()->id,
         ]);
-        return 'done';
+        return redirect()->route('index');
     }
 }
